@@ -3,14 +3,24 @@ import getopt, sys, yaml, string
 
 # main execution handlers
 def new(target):
-	if target:
-	  print "\n===> creating new crumbwich at path: " + target + "\n"
-	else:
-	  no_target_error('new', '<path>')
+  if target:
+    print "\n===> creating new crumbwich at path: " + target + "\n"
+  else:
+    no_target_error('new', '<path>')
 def post(target):
-	print (
-	  "\n===> creating new crumb: \"" + target + "\"\n"
-	)
+  print "\n===> creating new crumb: \"" + target + "\"\n"
+  print "to save, type \":::save\" on a single line"
+  print "when finished, type \":::cancel\" or \":::done\" on a single line"
+  print "(NOTE: \":::done\" will save your crumb)"
+  input_list = []
+  exit_strings = [":::save",":::cancel",":::done"]
+  while True:
+    input_str = raw_input(">")
+    if input_str in exit_strings:
+      break
+    else:
+      input_list.append(input_str)
+  print input_list
 def help(target):
   print(
     "\n===> available commands:\n"
