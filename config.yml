@@ -1,0 +1,7 @@
+input_path:		"./base/"
+output_path:	"~/Documents/cw-output"
+themes_path:	"./base/themes"
+layouts_path:	"./base/layouts"
+crumbs_path:	"./base/crumbs"
+
+theme:			"default"
