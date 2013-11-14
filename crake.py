@@ -1,45 +1,19 @@
 #!/usr/bin/python
-import getopt, sys, yaml, string
-
-# main execution handlers
-def new(target):
-  if target:
-    print "\n===> creating new crumbwich at path: " + target + "\n"
-  else:
-    no_target_error('new', '<path>')
-def post(target):
-  print "\n===> creating new crumb: \"" + target + "\"\n"
-  print "to save, type \":::save\" on a single line"
-  print "when finished, type \":::cancel\" or \":::done\" on a single line"
-  print "(NOTE: \":::done\" will save your crumb)"
-  input_list = []
-  exit_strings = [":::save",":::cancel",":::done"]
-  while True:
-    input_str = raw_input(">")
-    if input_str in exit_strings:
-      break
-    else:
-      input_list.append(input_str)
-  print input_list
-def help(target):
-  print(
-    "\n===> available commands:\n"
-    + "         \"new <path>\": create new crumbwich at <path>\n"
-    + "         \"post <name>\": create new crumb called <name>\n"
-  )
+import getopt, os, sys, yaml, string
+lib_path = os.path.abspath('./lib')
+sys.path.append(lib_path)
 
 
-# error handlers: an incorrect command line
-# argument was specified, let the user know
-def no_target_error(action, suggestion):
-  print "\n===> please specify a target in the form of: " + suggestion + "\n"
+# crumbwich-specific modules
+import cw_new, cw_post, cw_save, cw_help
 
 
 # a list of available command line options
+# mapped to their respective modules
 available_options = {
-	"new":new,
-	"post":post,
-	"help":help
+	"new":cw_new.new,
+	"post":cw_post.post,
+	"help":cw_help.help
 }
 
 
