@@ -5,7 +5,7 @@ sys.path.append(lib_path)
 
 
 # crumbwich-specific modules
-import cw_new, cw_post, cw_save, cw_help
+import cw_new, cw_post, cw_save, cw_publish, cw_help
 
 
 # a list of available command line options
